@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 export default function Button(props) {
   const className = [props.className]
   if (props.isPrimary) className.push('btn-primary')
+  if (props.isLight) className.push('btn-light')
   if (props.isLarge) className.push('btn-lg')
   if (props.isSmall) className.push('btn-sm')
   if (props.isBlock) className.push('btn-block')
@@ -14,7 +15,7 @@ export default function Button(props) {
     if (props.onClick) props.onClick()
   }
 
-  if (props.isLoading || props.isDisabled) {
+  if (props.isDisabled || props.isLoading) {
     if (props.isDisabled) className.push('disabled')
     return (
       <span className={className.join(' ')} style={props.style}>
@@ -24,7 +25,7 @@ export default function Button(props) {
             <span className='sr-only'>Loading...</span>
           </>
         ) : (
-          props.childern
+          props.children
         )}
       </span>
     )
@@ -40,7 +41,7 @@ export default function Button(props) {
           target={props.target === '_blank' ? '_blank' : undefined}
           rel={props.target === '_blank' ? 'noopener noreferrer' : undefined}
         >
-          {props.childern}
+          {props.children}
         </a>
       )
     } else {
@@ -51,27 +52,31 @@ export default function Button(props) {
           style={props.style}
           onClick={onClick}
         >
-          {props.childern}
+          {props.children}
         </Link>
       )
     }
   }
+
   return (
     <button
       className={className.join(' ')}
       style={props.style}
       onClick={onClick}
     >
-      {props.childern}
+      {props.children}
     </button>
   )
 }
-Button.prototype = {
-  type: propTypes.oneOf(['button', 'Link']),
+
+Button.propTypes = {
+  type: propTypes.oneOf(['button', 'link']),
   onClick: propTypes.func,
-  target: propTypes.string,
   href: propTypes.string,
+  target: propTypes.string,
   className: propTypes.string,
+  isPrimary: propTypes.bool,
+  isLight: propTypes.bool,
   isExternal: propTypes.bool,
   isDisabled: propTypes.bool,
   isLoading: propTypes.bool,
