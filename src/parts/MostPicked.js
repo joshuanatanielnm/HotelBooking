@@ -21,6 +21,7 @@ export default function MostPicked(props) {
           <div className='card'>Card 5</div>
         </div>
       </div>
+      <div className='row'></div>
     </section>
   )
 }
