@@ -26,6 +26,7 @@
 @import 'navbar';
 @import 'card';
 @import 'breadcrumb';
+@import 'container-grid';
 @import 'pagination';
 @import 'badge';
 @import 'jumbotron';
@@ -59,7 +60,7 @@ header {
   width: 100%;
   position: relative;
   margin-bottom: 50px;
-
+  margin-bottom: 70px;
   .navbar {
     height: 80px;
 
@@ -84,4 +85,12 @@ header {
       }
     }
   }
+}
+
+section {
+  margin-bottom: 70px;
+}
+
+.card {
+  height: 100%;
 }
