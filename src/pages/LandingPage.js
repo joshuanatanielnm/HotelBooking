@@ -1,5 +1,6 @@
 import landingPage from 'json/landingPage.json'
 import Categories from 'parts/Categories'
+import Footer from 'parts/Footer'
 import Header from 'parts/Header'
 import Hero from 'parts/Hero'
 import MostPicked from 'parts/MostPicked'
@@ -22,6 +23,7 @@ export default class LandingPage extends Component {
         />
         <Categories data={landingPage.categories} />
         <Testimoni data={landingPage.testimonial} />
+        <Footer />
       </>
     )
   }
