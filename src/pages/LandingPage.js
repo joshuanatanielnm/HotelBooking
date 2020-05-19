@@ -3,6 +3,7 @@ import Categories from 'parts/Categories'
 import Header from 'parts/Header'
 import Hero from 'parts/Hero'
 import MostPicked from 'parts/MostPicked'
+import Testimoni from 'parts/Testimony'
 import React, { Component } from 'react'
 
 export default class LandingPage extends Component {
@@ -20,6 +21,7 @@ export default class LandingPage extends Component {
           data={landingPage.mostPicked}
         />
         <Categories data={landingPage.categories} />
+        <Testimoni data={landingPage.testimonial} />
       </>
     )
   }
