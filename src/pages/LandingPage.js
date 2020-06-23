@@ -1,16 +1,22 @@
-import landingPage from 'json/landingPage.json'
+import React, { Component } from 'react'
+
 import Categories from 'parts/Categories'
 import Footer from 'parts/Footer'
 import Header from 'parts/Header'
 import Hero from 'parts/Hero'
 import MostPicked from 'parts/MostPicked'
 import Testimoni from 'parts/Testimony'
-import React, { Component } from 'react'
+import landingPage from 'json/landingPage.json'
 
 export default class LandingPage extends Component {
   constructor(props) {
     super(props)
     this.refMostPicked = React.createRef()
+  }
+
+  componentDidMount(){
+    window.title = "LandingPage"
+    window.scrollTo(0,0)
   }
   render() {
     return (
