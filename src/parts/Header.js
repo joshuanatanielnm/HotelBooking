@@ -1,7 +1,7 @@
-import Button from 'elements/Button'
 import BrandIcon from 'parts/IconText'
-import React from 'react'
+import Button from 'elements/Button'
 import Fade from 'react-reveal/Fade'
+import React from 'react'
 
 export default function Header(props) {
   const getNavLinkClass = (path) => {

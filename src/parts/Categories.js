@@ -1,11 +1,11 @@
 import Button from 'elements/Button'
-import React from 'react'
 import Fade from 'react-reveal/Fade'
+import React from 'react'
 
 export default function Categories({ data }) {
   return data.map((category, index1) => {
     return (
-      <section className='container' key={`category-${index1}`}>
+      <section className="container" key={`category-${index1}`}>
         <Fade bottom>
           <h4 className='mb-3 font-weight-medium'>{category.name}</h4>
           <div className='container-grid'>
