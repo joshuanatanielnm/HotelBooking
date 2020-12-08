@@ -8,7 +8,7 @@ export default function BookingInformation(props) {
     <Fade>
       <div className='container' style={{ marginBottom: 30 }}>
         <div className='row justify-content-center align-items-center'>
-          <div className='col-5 border-right py-5' style={{ paddingRight: 80 }}>
+          <div className='py-5 col-5 border-right' style={{ paddingRight: 80 }}>
             <Fade delay={300}>
               <div className='card'>
                 <figure className='img-wrapper' style={{ height: 270 }}>
@@ -41,7 +41,7 @@ export default function BookingInformation(props) {
               </div>
             </Fade>
           </div>
-          <div className='col-5 py-5' style={{ paddingLeft: 80 }}>
+          <div className='py-5 col-5' style={{ paddingLeft: 80 }}>
             <Fade delay={600}>
               <label htmlFor='firstName'>First Name</label>
               <InputText

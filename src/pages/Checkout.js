@@ -13,8 +13,10 @@ import Fade from 'react-reveal/Fade'
 import Header from 'parts/Header'
 import ItemDetails from 'json/itemDetails.json'
 import Payment from 'parts/Checkout/Payment'
+import checkout from 'store/reducers/checkout'
+import { connect } from 'react-redux'
 
-export default class Checkout extends Component {
+class Checkout extends Component {
   state = {
     data: {
       firstName: '',
@@ -42,11 +44,31 @@ export default class Checkout extends Component {
 
   render() {
     const { data } = this.state
+    const { checkout } = this.props
 
-    const checkout = {
-      duration: 3,
-    }
-
+    if (!checkout)
+      return (
+        <div className='container'>
+          <div
+            className='row align-items-center justify-content-center text-center'
+            style={{ height: '100vh' }}
+          >
+            <div className='col-3'>
+              Pilih kamar dulu
+              <div>
+                <Button
+                  className='btn mt-5'
+                  type='button'
+                  onClick={() => this.props.history.goBack()}
+                  isLight
+                >
+                  Back
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
     const steps = {
       bookingInformation: {
         title: 'Booking Information',
@@ -100,7 +122,7 @@ export default class Checkout extends Component {
                     data.phone !== '' && (
                       <Fade>
                         <Button
-                          className='btn mb-3'
+                          className='mb-3 btn'
                           type='button'
                           isBlock
                           isPrimary
@@ -113,7 +135,7 @@ export default class Checkout extends Component {
                     )}
                   <Button
                     className='btn'
-                    type='link'
+                    type='button'
                     isBlock
                     isLight
                     href={`/properties/${ItemDetails._id}`}
@@ -130,7 +152,7 @@ export default class Checkout extends Component {
                       data.bankHolder !== '' && (
                         <Fade>
                           <Button
-                            className='btn mb-3'
+                            className='mb-3 btn'
                             type='button'
                             isBlock
                             isPrimary
@@ -143,7 +165,7 @@ export default class Checkout extends Component {
                       )}
                     <Button
                       className='btn'
-                      type='link'
+                      type='button'
                       isBlock
                       isLight
                       onClick={prevStep}
@@ -158,7 +180,7 @@ export default class Checkout extends Component {
                 <Controller>
                   <Button
                     className='btn'
-                    type='link'
+                    type='button'
                     isBlock
                     isPrimary
                     hasShadow
@@ -175,3 +197,9 @@ export default class Checkout extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => ({
+  checkout: state.checkout,
+})
+
+export default connect(mapStateToProps)(Checkout)
