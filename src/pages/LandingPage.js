@@ -18,16 +18,15 @@ class LandingPage extends Component {
   componentDidMount() {
     window.title = 'LandingPage'
     window.scrollTo(0, 0)
-    if (this.props.page.landingPage) {
+    if (!this.props.page.landingPage)
       this.props.fetchPage(
-        'https://admin-hotelbooking.herokuapp.com/api/v1/member/landing-page',
+        `${process.env.REACT_APP_HOST}/api/v1/member/landing-page`,
         'landingPage'
       )
-    }
   }
+
   render() {
     const { page } = this.props
-
     if (!page.hasOwnProperty('landingPage')) return null
     return (
       <>
@@ -37,15 +36,16 @@ class LandingPage extends Component {
           refMostPicked={this.refMostPicked}
           data={page.landingPage.mostPicked}
         />
-        <Categories data={page.landingPage.categories} />
+        <Categories data={page.landingPage.category} />
         <Testimoni data={page.landingPage.testimonial} />
         <Footer />
       </>
     )
   }
 }
+
 const mapStateToProps = (state) => ({
-  page: state.page ? state.page.landingPage : null,
+  page: state.page,
 })
 
 export default connect(mapStateToProps, { fetchPage })(LandingPage)
